@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 | Portfolio</title>
+    <meta name="description" content="个人主页 - 教育、实习、项目、技能与作品集">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 紫色圆点光标 -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo" data-nav="home">
+            <img src="home pic/web logo.jpg" alt="个人主页 Logo">
+        </a>
+
+        <!-- 桌面端横向导航 -->
+        <nav class="nav-menu nav-desktop" aria-label="主导航">
+            <a href="#about" class="nav-link" data-nav="about">关于我</a>
+            <a href="#education" class="nav-link" data-nav="education">教育经历</a>
+            <a href="#internship" class="nav-link" data-nav="internship">实习经历 </a>
+            <a href="#programs" class="nav-link" data-nav="programs">实践项目</a>
+            <a href="#campus" class="nav-link" data-nav="campus">校园经历</a>
+            <a href="#skills" class="nav-link" data-nav="skills">🙋技能与作品</a>
+            <a href="#contact" class="nav-link" data-nav="contact">联系我 </a>
+        </nav>
+
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="切换页面语言" aria-pressed="false">
+            <span class="language-option" data-language="zh">中</span>
+            <span class="language-option" data-language="en">EN</span>
+        </button>
+
+        <!-- 右上 Table 目录按钮（桌面端） -->
+        <button class="table-btn nav-desktop" id="tableBtn" aria-label="目录" aria-expanded="false">
+            <span class="table-icon">≡</span>
+        </button>
+
+        <!-- Table 下拉目录 -->
+        <div class="table-dropdown" id="tableDropdown" role="menu" aria-hidden="true">
+            <a href="#about" class="dropdown-link" data-nav="about">关于我</a>
+            <a href="#education" class="dropdown-link" data-nav="education">教育经历</a>
+            <a href="#internship" class="dropdown-link" data-nav="internship">实习经历</a>
+            <a href="#programs" class="dropdown-link" data-nav="programs">实践项目</a>
+            <a href="#campus" class="dropdown-link" data-nav="campus">校园经历</a>
+            <a href="#skills" class="dropdown-link" data-nav="skills">技能与作品</a>
+            <a href="#contact" class="dropdown-link" data-nav="contact">联系我</a>
+        </div>
+
+        <!-- 汉堡按钮（移动端） -->
+        <button class="hamburger nav-mobile" id="hamburger" aria-label="打开菜单" aria-expanded="false">
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+        </button>
+    </div>
+</header>
+
+<!-- 移动端抽屉侧边栏 -->
+<aside class="drawer nav-mobile" id="drawer" aria-hidden="true">
+    <div class="drawer-header">
+        <span class="drawer-title">导航</span>
+        <button class="drawer-close" id="drawerClose" aria-label="关闭菜单">&times;</button>
+    </div>
+    <nav class="drawer-menu" aria-label="移动端导航">
+        <a href="#about" class="drawer-link" data-nav="about">关于我</a>
+        <a href="#education" class="drawer-link" data-nav="education">教育经历</a>
+        <a href="#internship" class="drawer-link" data-nav="internship">实习经历</a>
+        <a href="#programs" class="drawer-link" data-nav="programs">实践项目</a>
+        <a href="#campus" class="drawer-link" data-nav="campus">校园经历</a>
+        <a href="#skills" class="drawer-link" data-nav="skills">技能与作品</a>
+        <a href="#contact" class="drawer-link" data-nav="contact">联系我</a>
+    </nav>
+</aside>
+<div class="drawer-overlay nav-mobile" id="drawerOverlay"></div>
+
+<!-- ============ 阅读进度条 + 回顶按钮 ============ -->
+<div class="progress-container" id="progressContainer">
+    <div class="progress-bar" id="progressBar"></div>
+    <span class="progress-text" id="progressText">0%</span>
+</div>
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">
+    <span>&uarr;</span>
+</button>
+
+<main>
+
+<!-- ============ 首页 Hero ============ -->
+<section id="home" class="section-hero">
+    <div class="hero-bg-image"></div>
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-container">
+        <div class="hero-text">
+            <p class="hero-greeting">你好，欢迎来到</p>
+            <h1 class="hero-name">蔡依莹的个人主页</h1>
+            <p class="hero-subtitle"> 公共管理学 · 传播学 · 法语语言文学</p>
+            <p class="hero-desc">2027届硕士研究生，专注于<strong>教育政策研究</strong><strong>、数据可视化</strong>与<strong>内容传播</strong>。具有跨学科背景与丰富的项目管理、内容制作与数据分析经验。</p>
+            <a href="#about" class="hero-cta"> &darr;</a>
+        </div>
+        <div class="hero-photo">
+            <img src="home pic/my pic.jpg" alt="个人照片">
+            <div class="hero-photo-fade"></div>
+        </div>
+    </div>
+    <!-- Hero → About 渐变过渡区 -->
+    <div class="hero-transition"></div>
+</section>
+
+<!-- ============ 关于我 About me（堆叠卡片） ============ -->
+<section id="about" class="section section-about">
+    <div class="section-header">
+        <h2 class="section-title">关于我</h2>
+    </div>
+    <div class="stacked-cards" id="stackedCards">
+            <article class="stacked-card" data-card="01" data-index="0">
+            <div class="card-number">01</div>
+            <h3 class="card-title">项目与活动管理</h3>
+            <div class="card-content">
+                <p>作为法语系团委学生会主席团成员，负责<strong>年度项目群统筹</strong>。一年内接连落地迎新、校地共建、毕业季等多类活动。任职期间系团委获评"2022年度上海市基层团组织典型选树团委"。</p>
+                <p>作为研究中心学生秘书，参与2次学术会议、3次讲座/论坛的<strong>审批、手册、接待、现场支持与新闻稿工作</strong>。</p>
+                <p>实习期间，曾参与<strong>秋招线上直播支持</strong>，负责设备检查、场地布置与应急处理；负责部门员工团建活动的策划与落地。</p>
+                <p>具有<strong>国际会议与展会接待经验</strong>，具有丰富跨文化沟通与现场协作经验。</p>
+            </div>
+        </article>
+        <article class="stacked-card" data-card="02" data-index="1">
+            <div class="card-number">02</div>
+            <h3 class="card-title">内容制作与传播</h3>
+            <div class="card-content">
+                <p>运营上外法语系两个官方公众号，负责<strong>选题安排、素材组织与审核发布</strong>，形成"活动－内容－素材库"的工作流程闭环。</p>
+                <p>具有<strong>公众号排版与平面设计经验</strong>，为学校团委学生会主要公众号进行推送排版及插图制作、各类讲座及校园活动进行宣传物料制作。</p>
+                <p>具有<strong>视频策划与剪辑经验</strong>。独立承担3条长视频全程剪辑、1条合作剪辑视频，参与毕业季视频策划、拍摄统筹、脚本与剪辑。</p>
+                <p>香港学习期间参与<strong>数字媒体创意方案项目</strong>，结合AI视频生成工具Seedance、Kling与剪映，制作概念视频。</p>
+                <p>在立邦"为爱上色"支教项目宣传组中，产出多轮图文与短视频内容，覆盖公众号、微博、美篇等平台。</p>
+            </div>
+        </article>
+        <article class="stacked-card" data-card="03" data-index="2">
+            <div class="card-number">03</div>
+            <h3 class="card-title">数据洞察与可视化</h3>
+            <div class="card-content">
+                <p>实习期间<strong>维护与迭代HR培训可视化Dashboard</strong>，确保每周五准时更新。用Excel的VLOOKUP与数据透视表整理多源数据，标准化各类数据；在Power BI中进行看板维护。</p>
+                <p>实习期间维护HR数据系统，负责月度考勤/薪酬福利登记核对，参与HR工单派单。</p>
+                <p>香港学习期间参与<strong>数据新闻课程项目</strong>，围绕免签政策的可视化故事，负责数据收集、数据标准化、图表设计、网页搭建。</p>
+            </div>
+        </article>
+        <article class="stacked-card" data-card="04" data-index="3">
+            <div class="card-number">04</div>
+            <h3 class="card-title">学术与政策研究</h3>
+            <div class="card-content">
+                <p>硕士阶段研究方向为<strong>AI教育政策、高等教育国际化</strong>，现有2篇论文已于学术会议汇报发表，3篇待发表。</p>
+                <p>掌握<strong>政策文本分析、半结构化访谈、质性文本编码</strong>等研究方法，具备扎实的学术研究基础。</p>
+            </div>
+        </article>
+    </div>
+</section>
+<section id="education" class="section section-education">
+    <div class="section-header">
+        <h2 class="section-title">教育经历</h2>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item" data-side="left">
+            <div class="timeline-badge">
+                 <img src="school logo/sisu.png" alt="上海外国语大学校徽">
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-time">2020.09 - 2024.06</span>
+                <h3 class="timeline-school">上海外国语大学 <span class="tag">211</span></h3>
+                <p class="timeline-major">外国语言文学 · 法语专业 · 本科</p>
+            </div>
+        </div>
+        <div class="timeline-item" data-side="right">
+            <div class="timeline-badge">
+                 <img src="school logo/ouc.png" alt="中国海洋大学校徽">
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-time">2024.09 - 2027.06</span>
+                <h3 class="timeline-school">中国海洋大学 <span class="tag">985/211</span></h3>
+                <p class="timeline-major">公共管理学 · 教育经济与管理 · 硕士</p>
+            </div>
+        </div>
+        <div class="timeline-item" data-side="left">
+            <div class="timeline-badge">
+                 <img src="school logo/hkbu.jpg" alt="香港浸会大学大学校徽">
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-time">2025.09 - 2026.07</span>
+                <h3 class="timeline-school">香港浸会大学* <span class="tag">传播学QS48</span></h3>
+                <p class="timeline-major">传播学（Communication）· 文学硕士（MA）</p>
+                <p class="timeline-major">*注：香港浸会大学为硕士阶段双学位项目</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- ============ 实习经历 Internship ============ -->
+<section id="internship" class="section section-internship">
+    <div class="section-header">
+        <h2 class="section-title">实习经历</h2>
+    </div>
+    <div class="internship-cards">
+        <!-- 昕诺飞 -->
+        <article class="internship-card">
+            <div class="card-header">
+                <div class="company-logo">
+                <img src="intern logo/signify logo.jpg" alt="signify logo">  
+                </div>
+                <div>
+                    <h3 class="company-name">昕诺飞（中国）投资有限公司</h3>
+                    <span class="company-time">2022.07 - 2022.09</span>
+                </div>
+            </div>
+            <div class="card-highlight">
+                <span class="highlight-label">主要职责</span>
+                <span>数据维护 / 工单处理 / 秋招协助 / 团建落地</span>
+            </div>
+            <p class="card-role">HR Services 实习生 — 支持亚太区人事数据管理、校园招聘、团队建设及基础人事运维等日常HR工作。</p>
+            <ul class="card-duties">
+                <li>运用<strong>Excel VLOOKUP、数据透视表工具</strong>，完成月度员工考勤、薪酬福利数据的登记、核对与报表整理，保障人事数据无误。</li>
+                <li>参与<strong>秋季校园招聘</strong>，承担线上宣讲会设备调试、场地布置、直播待命及突发问题应急处理。</li>
+                <li>负责<strong>部门月度团建项目</strong>，统筹活动游戏策划、场地预定、物料及餐点采购、现场执行。</li>
+                <li>常态化更新企业人事系统及员工档案，标准化办理员工在职、离职等证明。</li>
+            </ul>
+        </article>
+
+        <!-- 徐家汇书院 -->
+        <article class="internship-card">
+            <div class="card-header">
+                <div class="company-logo">
+                <img src="intern logo/zkwlib logo.jpg" alt="zkwlib logo">  
+                </div>
+                <div>
+                    <h3 class="company-name">徐家汇书院（徐汇区图书馆）</h3>
+                    <span class="company-time">2023.07 - 2023.08</span>
+                </div>
+            </div>
+            <div class="card-highlight">
+                <span class="highlight-label">主要职责</span>
+                <span>跨机构活动与接待 / 公共活动支持 / 宣传物料制作</span>
+            </div>
+            <p class="card-role">公共事业部 — 主任助理，协助开展对外合作、政社接待及公共活动落地工作。</p>
+            <ul class="card-duties">
+                <li><strong>对接政府单位、各类社会组织及合作机构</strong>，完成日常接待工作，承担机构部分文稿翻译。</li>
+                <li>协同联动西岸美术馆、辖区企业<strong>落地“灯塔书房”领读人公益阅读活动</strong>，负责宣传物料制作、会场布置、现场影像记录，完成活动回顾视频剪辑。</li>
+                <li>参与<strong>书院“寻光之夜”大型公共活动</strong>，负责现场客流引导、秩序维护、游客答疑等保障工作。</li>
+            </ul>
+        </article>
+
+        <!-- 菲仕兰 -->
+        <article class="internship-card">
+            <div class="card-header">
+                <div class="company-logo">
+                <img src="intern logo/friesland logo.jpg" alt="friesland logo"> 
+                </div>
+                <div>
+                    <h3 class="company-name">菲仕兰食品贸易（上海）有限公司</h3>
+                    <span class="company-time">2023.08 - 2023.11</span>
+                </div>
+            </div>
+            <div class="card-highlight">
+                <span class="highlight-label">主要职责</span>
+                <span>培训看板维护 / 培训活动落地 / 宣传物料制作</span>
+            </div>
+            <p class="card-role">Learning &amp; Development Intern — 负责员工培训数据可视化搭建与维护、新员工入职及管培生项目落地。</p>
+            <ul class="card-duties">
+                <li>整合各部门员工培训数据，运用Excel函数、数据透视表及Power BI搭建并每周<strong>迭代更新培训数据可视化看板</strong>，定期完成数据核查与复盘。</li>
+                <li>参与<strong>管培生培训项目</strong>，对接管培生群体，收集培训反馈、记录活动全过程影像，独立完成项目宣传视频、总结视频剪辑。</li>
+                <li>参与<strong>社招新员工培训项目</strong>，协助完成员工资料录入、基础培训落地及活动盘点总结。</li>
+                <li>协助落地其他各类人才培养与发展活动，负责宣传文案撰写、物料中英文翻译、活动会场布置及流程统筹。</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<!-- ============ 实践项目 Programs ============ -->
+<section id="programs" class="section section-programs">
+    <div class="section-header">
+        <h2 class="section-title">实践项目</h2>
+    </div>
+    <div class="program-cards">
+        <article class="program-card">
+            <h3 class="program-title">香港浸会大学传理学院数字媒体创意方案设计项目</h3>
+            <span class="program-time">2026.01 - 2026.04</span>
+            <a href="https://mp.weixin.qq.com/s?__biz=MzA5NjUzODM1MQ==&mid=2649564183&idx=1&sn=8ab095686317b6c38b45570d6d1f9592&chksm=89aa3d6f78ffd2269efdb4a468a8a9be65f10e5acf524633e60c4caeb30f0540d482fc70a75f&mpshare=1&scene=24&srcid=05297OasHlQJ4eXo8KsU5IEa&sharer_shareinfo=2bc68d7d9cac3be30dc229578e4a9a07&sharer_shareinfo_first=ca54dabea7e7c7083a5c68b6eb16768b#rd" class="program-image-link" target="_blank" rel="noopener">
+                <div class="program-image-container memento cover">
+                    <img src="program cover\memento cover.jpg" alt="memento cover">
+                    <span class="program-image-overlay">Memento MR概念展示</span>
+                </div>
+                <span class="program-image-hint">点击图片查看更多</span>
+            </a>
+            <p class="program-desc">聚焦情感记忆沉浸式体验赛道，参与<strong>MR混合现实创意产品Memento</strong>方案策划。完成<strong>行业前置调研、产品方案打磨、概念视频制作</strong>，落地完整的MR情感体验产品方案。基于学术论文、行业报告及现有产品数据，开展前置调研，挖掘用户需求，打磨产品核心定位与功能方案，整合6DoF采集、BCI情感感知、多感官重现核心技术。产出概念展示视频，形成创新性的数字媒体设计成果。</p>
+            <span class="program-tag">数字媒体</span>
+        </article>
+        
+        <article class="program-card">
+            <h3 class="program-title">数据可视化与数据新闻项目</h3>
+            <span class="program-time">2026.01 - 2026.04</span>
+            <a href="visa-free%20datanews/index.html" class="program-image-link" target="_blank" rel="noopener">
+                <div class="program-image-container visafree cover">
+                    <img src="program cover\visafree cover.jpg" alt="visafree cover">
+                    <span class="program-image-overlay">免签政策数据新闻网页</span>
+                </div>
+                <span class="program-image-hint">点击图片查看更多</span>
+            </a>
+            <p class="program-desc">围绕中国单方面免签政策落地实效开展数据新闻创作，通过<strong>数据挖掘、可视化呈现与网页搭建</strong>，直观解读政策经济价值与落地效果。团队自主确定研究选题，梳理免签政策扩容历程，以上海韩国游客激增为核心案例，收集、标准化处理多维度数据，剖析政策对入境旅游、区域经济的影响。在项目中<strong>独立负责完成网页设计与搭建</strong>。</p>
+            <span class="program-tag">数据新闻</span>
+        </article>
+    
+         <article class="program-card">
+            <h3 class="program-title">立邦「为爱上色」中国大学生农村支教项目</h3>
+            <span class="program-time">2023.07 - 2023.08</span>
+            <p class="program-desc">协助落地乡村支教课程、乡村文化探访活动，负责项目全渠道线上宣传与内容产出。参与福建南平、厦门两地乡村美育课程授课及乡村文化探访行动，担任宣传组成员，依托微信公众号、微博、美篇等新媒体平台产出多轮图文与短视频内容。顺利完成乡村支教公益授课任务，<strong>扩大项目公益影响力</strong>，传递乡村教育公益价值。</p>
+            <span class="program-tag">公益支教</span>
+        </article>
+        
+        <article class="program-card">
+            <h3 class="program-title">大学生网络受骗风险防范意识现状与应对策略</h3>
+            <span class="program-time">2020.10 - 2023.05</span>
+            <p class="program-desc">针对大学生网络诈骗高发问题，<strong>联合校方及公安部门开展专项调研与科普宣传</strong>，助力提升高校学生反诈防范意识。联动当地派出所、学校保卫处，设计调研问卷并回收有效样本500余份，系统梳理当代大学生反诈现状、现存风险与防范困境，完成专项调研报告撰写。</p>
+            <span class="program-tag">调研报告</span>
+        </article>
+
+        <article class="program-card">
+            <h3 class="program-title">国外新冠自主治疗咨询平台研究与国内平台建设推广</h3>
+            <span class="program-time">2023.01 - 2023.02</span>
+            <p class="program-desc">聚焦中外新冠自主诊疗服务平台发展差异，开展多平台对比调研，为国内医疗自助服务平台优化提供参考。负责筛选美国、爱尔兰、法国等5个国外平台及4个国内新冠自查服务平台，系统性搜集各平台基础信息、运营模式、内容设计及服务功能；整合多维度数据完成对比分析。</p>
+            <span class="program-tag">对比研究</span>
+        </article>
+        
+    </div>
+</section>
+
+<!-- ============ 校园经历 Campus + 奖项 ============ -->
+<section id="campus" class="section section-campus">
+    <div class="section-header">
+        <h2 class="section-title">校园经历</h2>
+    </div>
+    <div class="campus-cards">
+        <article class="campus-card">
+            <div class="campus-role-badge">学生秘书</div>
+            <h3 class="campus-title">山东省与美国交流合作研究中心</h3>
+            <span class="campus-time">2024.09 - 2025.06</span>
+            <p class="campus-desc">协助学术研究辅助、国际学术活动统筹执行、日常行政运维、财务报销与经费管理，保障科研推进与学术活动高效有序开展。</p>
+            <ul class="campus-duties">
+                <li><strong>科研辅助：</strong>协助中心主任完成文献搜集筛选、文献综述撰写、课题申报材料撰写。</li>
+                <li><strong>活动执行：</strong>全程参与2次国际学术会议、3场学术讲座及论坛的策划筹备与落地执行，涵盖外籍专家来访审批、会议手册编制、专家对接接待、会场协调。</li>
+                <li><strong>行政运维：</strong>负责中心日常事务协调、项目经费核对与财务报销、各类科研及活动材料分类归档。</li>
+                <li><strong>涉外接待：</strong>担任百年校庆志愿者，负责法国高校外宾接待；参与香港浸会大学合作交流午宴接待工作。</li>
+            </ul>
+        </article>
+
+        <article class="campus-card">
+            <div class="campus-role-badge">团委副书记<br><small>（主席团成员）</small></div>
+            <h3 class="campus-title">上海外国语大学法语系</h3>
+            <span class="campus-time">2022.06 - 2023.06</span>
+            <p class="campus-desc">分管系团学部、宣传部两个部门，统筹负责全系团学活动策划、新媒体运营、校地共建及学生会主要活动落地。</p>
+            <ul class="campus-duties">
+                <li><strong>迎新统筹：</strong>全权负责新生系列活动，涵盖新生晚会全流程筹划落地、新生指南推送、学生会纳新宣传、线下路演招募、面试筛选及新成员培训动员。</li>
+                <li><strong>校地共建：</strong>对接徐家汇街道团委，落地两大合作项目。组织中英法三语志愿者团队，承接徐汇建筑可阅读计划、百代小楼等文化场所场馆讲解、导览。</li>
+                <li><strong>新媒体运营：</strong>统筹运营"上外法语系学生联合会"、"上外法语系"公众号，负责选题策划、内容审核、统筹活动影像记录及推文推送。</li>
+                <li><strong>毕业季项目：</strong>作为主创核心成员，统筹毕业歌会落地、毕业礼品采购定制，独立完成17分钟毕业主题纪录片的拍摄统筹与全片剪辑。</li>
+                <li><strong>体系建设：</strong>参与系团委创建工作，助力系团委获评"2022年度上海市基层团组织典型选树团委"。</li>
+            </ul>
+        </article>
+
+        <article class="campus-card">
+            <div class="campus-role-badge">宣传部<br><small>设计组副组长</small></div>
+            <h3 class="campus-title">上海外国语大学团委学生会SYM工作室</h3>
+            <span class="campus-time">2020.07 - 2022.09</span>
+            <p class="campus-desc">负责校级团委学生会宣传工作，承担官方公众号视觉排版、宣传物料设计、插画制作，统筹组员工作分配。</p>
+            <ul class="campus-duties">
+                <li>服务"上外学联"、"青春上外"两大校级官方公众号，常态化完成推文排版、配图设计、活动海报、物料制作等宣传工作。</li>
+                <li>根据校园活动排期合理分配组员任务，保障宣传工作高效有序落地。</li>
+            </ul>
+        </article>
+
+        <article class="campus-card english-hidden">
+            <div class="campus-role-badge">团支部书记</div>
+            <h3 class="campus-title">上海外国语大学法语系2020级本科四班</h3>
+            <span class="campus-time">2020.09 - 2022.06</span>
+            <p class="campus-desc">负责班级团支部思想建设、团日活动开展、集体建设及评优创建工作，协同班委统筹班级日常事务。</p>
+            <ul class="campus-duties">
+                <li>策划开展系列主题团日、班级文体及建设活动，强化班级凝聚力与支部向心力。</li>
+                <li>系统性梳理支部建设成果、整理申报材料，积极参与校级基层团支部创建评优。</li>
+            </ul>
+        </article>
+    </div>
+
+    <!-- 奖项列表 -->
+    <div class="awards-block">
+        <h3 class="awards-title">学生阶段所获奖项</h3>
+        <div class="awards-grid">
+            <div class="award-item">
+                <span class="award-name">中国海洋大学2024级3年制研究生学习奖学金</span>
+                <span class="award-time">2026.05</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">Performance Scholarship of MA in Communication (Second Prize)</span>
+                <span class="award-time">2026.04</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">第四届全球视野中的教育政策论坛主题汇报三等奖</span>
+                <span class="award-time">2024.10</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">2023年上海市青少年模拟政协提案"最具潜力模拟提案"</span>
+                <span class="award-time">2023.11</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">2023年徐汇区青少年优秀模拟政协提案</span>
+                <span class="award-time">2023.08</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学冬季"致远计划"社会实践大赛三等奖</span>
+                <span class="award-time">2023.04</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学2021-2022学年"优秀学生"</span>
+                <span class="award-time">2022.10</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学2022-2023学年"优秀学生干部"</span>
+                <span class="award-time">2023.12</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学优秀学生奖学金二等奖</span>
+                <span class="award-time">多次</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学优秀学生奖学金三等奖</span>
+                <span class="award-time">多次</span>
+            </div>
+            <div class="award-item">
+                <span class="award-name">上海外国语大学法语系团委学生会明星部长</span>
+                <span class="award-time">2021.12</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 技能与作品 Skills & Works ============ -->
+<section id="skills" class="section section-skills">
+    <div class="section-header">
+        <h2 class="section-title">技能与作品</h2>
+    </div>
+
+    <!-- 技能标签 -->
+    <div class="skills-group">
+        <h3 class="skills-subtitle">技能</h3>
+        <div class="skills-tags">
+            <div class="skill-group">
+                <span class="skill-category">语言</span>
+                <div class="skill-tags">
+                    <span class="skill-tag">IELTS 7.0</span>
+                    <span class="skill-tag">英语专四优秀</span>
+                    <span class="skill-tag">英语专八良好</span>
+                    <span class="skill-tag">CET-4 605分</span>
+                    <span class="skill-tag">CET-6 613分</span>
+                    <span class="skill-tag">法语专业背景</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">媒体技能</span>
+                <div class="skill-tags">
+                    <span class="skill-tag">Canva</span>
+                    <span class="skill-tag">Adobe Photoshop</span>
+                    <span class="skill-tag">剪映</span>
+                    <span class="skill-tag">Adobe Premiere</span>
+                    <span class="skill-tag">秀米</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">数据分析与可视化</span>
+                <div class="skill-tags">
+                    <span class="skill-tag">NVivo</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Gephi</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Power BI</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">常用AI工具</span>
+                <div class="skill-tags">
+                    <span class="skill-tag">Codex（vibe coding）</span>
+                    <span class="skill-tag">Claude（数据分析） </span>
+                    <span class="skill-tag">Consensus（文献检索）</span>
+                    <span class="skill-tag">Gemini（vibe coding）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 公众号图文 走马灯 -->
+    <div class="works-section">
+        <h3 class="works-subtitle">公众号图文</h3>
+        <p class="works-hint">点击卡片打开链接 · 查看详情</p>
+        <div class="carousel" id="carouselArticles" role="region" aria-label="公众号图文">
+            <div class="carousel-track">
+                <a href="https://mp.weixin.qq.com/s/N_K-7qTltbgUss-0JKOz7Q" class="carousel-card" target="_blank" rel="noopener">
+                     <img src="wechat cover\wechat-cover-1.jpg" alt="wechat-cover-1">
+                    <span class="carousel-title">2024毕业季 | 超前点播！毕业大片抢先看！</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/ImwWllXn-XNxP8N2_Z_uyg" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-2.jpg" alt="wechat-cover-2">
+                    <span class="carousel-title">SFFSers远航 | 乘风破浪，鹏路翱翔</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/Xm8ru8DT0PBUlBBbKbG7rw" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-3.jpg" alt="wechat-cover-3">
+                    <span class="carousel-title">战疫有"法"·"语"你同行 | 法式云间观影会</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/Av3p_mL2Vk9HPUW7mgYLRw" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-4.jpg" alt="wechat-cover-4">
+                    <span class="carousel-title">法语系新生手册Ep05 | 吃喝玩乐</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/11B1BZ6i7LMldfv8fn--Mw" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-5.jpg" alt="wechat-cover-5">
+                    <span class="carousel-title">告白西索 | 四季晨昏，纸短情长</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/R8iQrWIrmS7nLhwU_uuIMw" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-6.jpg" alt="wechat-cover-6">
+                    <span class="carousel-title">招新季 | SYM宣传部——在宣传杂货铺点亮奇思妙想</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/8VGcS_FVN6GjKC8oYiD2IQ" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-7.jpg" alt="wechat-cover-7">
+                    <span class="carousel-title">西索魔法季 | 西索魔法学院失物招领处</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/XR75-xtFBc0A5k0JGqWsdg" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-8.jpg" alt="wechat-cover-8">
+                    <span class="carousel-title">【SISU迎新季】新生教育系列直播 直击排练现场</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/tsDD8YutAE5dA2xwiH-xlQ" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-9.jpg" alt="wechat-cover-9">
+                    <span class="carousel-title">【SISU迎新季】新生教育系列直播 图书馆奇妙夜</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/j-fMPOwXepl0xr_Csl_4lQ" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-9.jpg" alt="wechat-cover-9">
+                    <span class="carousel-title">【SISU迎新季】查收B站直播邀请函</span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/ehz-fUlcYyjuDCtAbLvDnw" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="wechat cover\wechat-cover-10.jpg" alt="wechat-cover-10">
+                    <span class="carousel-title">学术领航讲座 | 张鹏：青春停驻—上外两校区校园变迁小史</span>
+                </a>
+            </div>
+            <button class="carousel-btn carousel-prev" aria-label="向左滚动">&lsaquo;</button>
+            <button class="carousel-btn carousel-next" aria-label="向右滚动">&rsaquo;</button>
+        </div>
+    </div>
+
+    <!-- 视频剪辑 走马灯 -->
+    <div class="works-section">
+        <h3 class="works-subtitle">视频剪辑</h3>
+        <p class="works-hint">点击卡片打开链接 · 查看详情</p>
+        <div class="carousel" id="carouselVideos" role="region" aria-label="视频剪辑">
+            <div class="carousel-track">
+                <a href="https://share.weiyun.com/cbdSBAu0" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-1.png" alt="video-cover-1">
+                    <span class="carousel-title">上外法语系2024届毕业视频</span>
+                    <span class="carousel-duration">17:27</span>
+                </a>
+                <a href="https://share.weiyun.com/eYvscGsF" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-2.png" alt="video-cover-2">
+                    <span class="carousel-title">上海市2023年度典型选树评选上外法语系视频</span>
+                    <span class="carousel-duration">05:41</span>
+                </a>
+                <a href="https://share.weiyun.com/8zM9PWk9" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-3.png" alt="video-cover-3">
+                    <span class="carousel-title">上外法语系2022年迎新视频</span>
+                    <span class="carousel-duration">04:50</span>
+                </a>
+                <a href="https://share.weiyun.com/kF9TZlsQ" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-4.png" alt="video-cover-4">
+                    <span class="carousel-title">上外法语系团委学生会学年汇报展示视频（合作剪辑）</span>
+                    <span class="carousel-duration">04:30</span>
+                </a>
+                <a href="https://share.weiyun.com/5CcAJo72" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-5.png" alt="video-cover-5">
+                    <span class="carousel-title">厦门外国语学校保送生项目宣传视频</span>
+                    <span class="carousel-duration">03:57</span>
+                </a>
+                <a href="https://share.weiyun.com/c9ay093n" class="carousel-card" target="_blank" rel="noopener">
+                    <img src="video cover/video-cover-6.png" alt="video-cover-6">
+                    <span class="carousel-title">2023商务管培生视频</span>
+                    <span class="carousel-duration">03:57</span>
+                </a>
+            </div>
+            <button class="carousel-btn carousel-prev" aria-label="向左滚动">&lsaquo;</button>
+            <button class="carousel-btn carousel-next" aria-label="向右滚动">&rsaquo;</button>
+        </div>
+    </div>
+
+    <!-- 视觉与平面设计 画廊 -->
+    <div class="works-section">
+        <h3 class="works-subtitle">部分视觉与平面设计（非商用）</h3>
+        <p class="works-hint">鼠标悬停 · 查看详情</p>
+        <div class="carousel design-gallery" id="carouselDesign" role="region" aria-label="视觉与平面设计作品画廊">
+            <div class="carousel-track design-gallery-track">
+                <figure class="design-gallery-item"><img src="design/1 Stickers (5 in 1).png" alt="贴纸设计（5 合 1）" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/2 Mask.png" alt="口罩设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/3 Logo.png" alt="标志设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/4 Book cover.png" alt="书籍封面设计一" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/5 Book cover.png" alt="书籍封面设计二" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/6 Book cover.png" alt="书籍封面设计三" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/7 Sticky notes (4 in 1).jpg" alt="便利贴设计（4 合 1）" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/8 Stickers (7 in 1).png" alt="贴纸设计（7 合 1）" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/9 Promotion Poster.jpg" alt="宣传海报设计" loading="lazy"></figure> 
+                <figure class="design-gallery-item"><img src="design/12 Paper Slogan.jpg" alt="纸质手幅设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/13 Logo.png" alt="标志设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/14 Logo.png" alt="标志设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/15 Logo.png" alt="标志设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/10 Album cover (5).jpg" alt="专辑封面设计" loading="lazy"></figure>
+                <figure class="design-gallery-item"><img src="design/11 Stickers (7).jpg" alt="贴纸设计" loading="lazy"></figure>
+            </div>
+            <div class="design-preview" aria-hidden="true"><img src="" alt=""></div>
+            <button class="carousel-btn carousel-prev" aria-label="向左滚动">&lsaquo;</button>
+            <button class="carousel-btn carousel-next" aria-label="向右滚动">&rsaquo;</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 联系我 Contact ============ -->
+<section id="contact" class="section section-contact">
+    <div class="section-header">
+        <h2 class="section-title">联系我</h2>
+    </div>
+    <div class="contact-links">
+        <a href="mailto:cerry_cc020305@163.com" class="contact-link">
+            <span class="contact-icon">&#9993;</span>
+            <span class="contact-label">邮箱</span>
+        </a>
+        <a href="https://www.linkedin.com/in/yiying-cai-111055389" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-icon">in</span>
+            <span class="contact-label">LinkedIn</span>
+        </a>
+        <a href="#" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-icon">&#128196;</span>
+            <span class="contact-label">CV（中文）PDF</span>
+        </a>
+        <a href="#" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-icon">&#128196;</span>
+            <span class="contact-label">CV（英文）PDF</span>
+        </a>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 蔡依莹 | Portfolio</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
