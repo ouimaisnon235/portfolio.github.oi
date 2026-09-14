@@ -459,7 +459,7 @@
 
     const languageSwitch = $('#languageSwitch');
     const navigationLabels = {
-        about: 'About',
+        about: 'About Me',
         education: 'Education',
         internship: 'Internship',
         programs: 'Programs',
